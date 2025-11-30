@@ -1,0 +1,42 @@
+---
+import MainLayout from '../layouts/main.astro';
+import Navigation from '../components/Navigation';
+import Hero from '../components/Hero';
+import TrustStrip from '../components/TrustStrip';
+import ProblemSection from '../components/ProblemSection';
+import SolutionPillars from '../components/SolutionPillars';
+import ProductHighlight from '../components/ProductHighlight';
+import OutcomesSection from '../components/OutcomesSection';
+import HowItWorks from '../components/HowItWorks';
+import UseCases from '../components/UseCases';
+import PilotCTA from '../components/PilotCTA';
+import FounderStrip from '../components/FounderStrip';
+import Footer from '../components/Footer';
+---
+
+<MainLayout>
+  <div class="min-h-screen bg-gradient-to-b from-[#020617] via-[#020410] to-[#020617]">
+    <Navigation client:only="react" />
+    <Hero client:only="react" />
+    <TrustStrip client:only="react" />
+    <ProblemSection client:only="react" />
+    <SolutionPillars client:only="react" />
+    <ProductHighlight client:only="react" />
+    <OutcomesSection client:only="react" />
+    <HowItWorks client:only="react" />
+    <UseCases client:only="react" />
+    <PilotCTA client:only="react" />
+    <FounderStrip client:only="react" />
+    <Footer client:only="react" />
+  </div>
+</MainLayout>
+
+<style is:global>
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  body {
+    overflow-x: hidden;
+  }
+</style>

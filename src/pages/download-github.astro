@@ -1,0 +1,113 @@
+---
+import { readFileSync } from 'fs';
+import { resolve } from 'path';
+
+const filePath = resolve(process.cwd(), 'public/github-upload.tar.gz');
+
+let fileExists = false;
+let fileSize = '';
+
+try {
+  const stats = await import('fs').then(fs => fs.promises.stat(filePath));
+  fileExists = true;
+  fileSize = (stats.size / 1024 / 1024).toFixed(2) + ' MB';
+} catch (e) {
+  fileExists = false;
+}
+
+export const prerender = false;
+---
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Download GitHub Package</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, #020617 0%, #1e293b 100%);
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      color: white;
+    }
+    .container {
+      text-align: center;
+      padding: 3rem;
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 1rem;
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      max-width: 500px;
+    }
+    h1 {
+      margin: 0 0 1rem 0;
+      font-size: 2rem;
+      color: #22c55e;
+    }
+    p {
+      margin: 0 0 2rem 0;
+      opacity: 0.8;
+      line-height: 1.6;
+    }
+    .download-btn {
+      display: inline-block;
+      padding: 1rem 2rem;
+      background: #22c55e;
+      color: white;
+      text-decoration: none;
+      border-radius: 0.5rem;
+      font-weight: 600;
+      font-size: 1.125rem;
+      transition: all 0.2s;
+      border: none;
+      cursor: pointer;
+    }
+    .download-btn:hover {
+      background: #16a34a;
+      transform: translateY(-2px);
+      box-shadow: 0 10px 25px rgba(34, 197, 94, 0.3);
+    }
+    .file-info {
+      margin-top: 1.5rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      font-size: 0.875rem;
+      opacity: 0.7;
+    }
+    .error {
+      color: #ef4444;
+      background: rgba(239, 68, 68, 0.1);
+      padding: 1rem;
+      border-radius: 0.5rem;
+      border: 1px solid rgba(239, 68, 68, 0.3);
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    {fileExists ? (
+      <>
+        <h1>📦 GitHub Package Ready</h1>
+        <p>Click below to download your deployment package for GitHub upload.</p>
+        <a href="/github-upload.tar.gz" download class="download-btn">
+          Download Package
+        </a>
+        <div class="file-info">
+          File size: {fileSize}
+        </div>
+      </>
+    ) : (
+      <div class="error">
+        <h1>❌ File Not Found</h1>
+        <p>The package file doesn't exist yet. Please contact support.</p>
+      </div>
+    )}
+  </div>
+</body>
+</html>

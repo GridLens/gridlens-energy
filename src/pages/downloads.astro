@@ -1,0 +1,109 @@
+---
+export const prerender = false;
+---
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GridLens Downloads</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, #020617 0%, #1e293b 100%);
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      color: white;
+    }
+    .container {
+      text-align: center;
+      padding: 3rem;
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 1rem;
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      max-width: 600px;
+    }
+    h1 {
+      margin: 0 0 2rem 0;
+      font-size: 2.5rem;
+      color: #22c55e;
+    }
+    .download-btn {
+      display: inline-block;
+      padding: 1.25rem 2.5rem;
+      background: #22c55e;
+      color: white;
+      text-decoration: none;
+      border-radius: 0.5rem;
+      font-weight: 600;
+      font-size: 1.25rem;
+      transition: all 0.2s;
+      margin: 1rem;
+    }
+    .download-btn:hover {
+      background: #16a34a;
+      transform: translateY(-2px);
+      box-shadow: 0 10px 25px rgba(34, 197, 94, 0.3);
+    }
+    .steps {
+      margin-top: 2rem;
+      text-align: left;
+      background: rgba(0, 0, 0, 0.3);
+      padding: 1.5rem;
+      border-radius: 0.5rem;
+    }
+    .steps h2 {
+      color: #22c55e;
+      font-size: 1.25rem;
+      margin-top: 0;
+    }
+    .steps ol {
+      padding-left: 1.5rem;
+      line-height: 1.8;
+    }
+    .steps li {
+      margin-bottom: 0.75rem;
+    }
+    .git-link {
+      color: #38bdf8;
+      text-decoration: none;
+    }
+    .git-link:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>📦 GridLens Downloads</h1>
+    
+    <a href="/github-upload.tar.gz" download="github-upload.tar.gz" class="download-btn">
+      ⬇️ Download GitHub Package (1.7 MB)
+    </a>
+
+    <div class="steps">
+      <h2>🚀 Quick Setup Instructions:</h2>
+      <ol>
+        <li><strong>Install Git:</strong> Download from <a href="https://git-scm.com/download/win" class="git-link" target="_blank">git-scm.com</a> (takes 2 minutes)</li>
+        <li><strong>Extract:</strong> Right-click the downloaded file → Extract All</li>
+        <li><strong>Open PowerShell:</strong> In the extracted folder, Shift + Right-click → "Open PowerShell window here"</li>
+        <li><strong>Run these commands:</strong>
+          <pre style="background: #000; padding: 1rem; border-radius: 0.25rem; margin-top: 0.5rem; overflow-x: auto;">git init
+git add .
+git commit -m "Initial site"
+git branch -M main
+git remote add origin https://github.com/GridLens/gridlens-energy.git
+git push -u origin main</pre>
+        </li>
+        <li><strong>Enter credentials:</strong> Username: <code>GridLens</code>, Password: your GitHub token</li>
+      </ol>
+    </div>
+  </div>
+</body>
+</html>
